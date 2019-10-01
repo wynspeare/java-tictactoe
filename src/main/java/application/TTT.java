@@ -1,5 +1,6 @@
 package application;
 
+import application.handlers.ResourceHandler;
 import server.HTTPServer;
 import server.Router;
 import server.handlers.DefaultHandler;
@@ -22,6 +23,7 @@ public class TTT {
   public static Router createRouter() {
     Router router = new Router(serverLogger);
     router.addRoute("GET", "/", new DefaultHandler());
+    router.addRoute("GET", "/ttt", new ResourceHandler());
     return router;
   }
 }
