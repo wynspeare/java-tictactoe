@@ -3,5 +3,6 @@ language: java
 jdk: openjdk11
 
 script:
+  - "./gradlew test"
   - java -cp tictactoe-1.0-SNAPSHOT.jar:build/libs/*:. application.TTT & MyPID=$!
   - kill $MyPID
