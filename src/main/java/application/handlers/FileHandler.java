@@ -1,9 +1,8 @@
 package application.handlers;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.stream.Collectors;
 
 public class FileHandler {
@@ -22,5 +21,17 @@ public class FileHandler {
             .getResourceAsStream("assets/public" + requestedResource);
     return new BufferedReader(new InputStreamReader(in))
             .lines().collect(Collectors.joining("\n"));
+  }
+
+  public String getMIMEType() {
+    Path path = new File("assets/public" + requestedResource).toPath();
+    String mimeType = null;
+    try {
+      mimeType = Files.probeContentType(path);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    System.out.println(mimeType);
+    return mimeType;
   }
 }

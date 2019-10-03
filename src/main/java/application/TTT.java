@@ -29,6 +29,7 @@ public class TTT {
     router.addRoute("GET", "/ttt", new ResourceHandler("assets/public/index.html"));
     router.addRoute("GET", "/", new RedirectHandler("http://127.0.0.1:5000/ttt"));
     router.addRoute("GET", "/styles.css", new StaticHandler());
+    router.addRoute("GET", "/favicon.ico", new StaticHandler());
 
     return router;
   }
