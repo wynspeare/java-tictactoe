@@ -14,13 +14,13 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 h1 {
-    font-size: 4vw;
+    font-size: 3vw;
 }
 h2 {
     padding-bottom: 20px;
 }
 #game-container {
-    width: 30%;
+    width: 25%;
     margin: 0 auto;
     padding: 20px 40px;
     border: 5px dashed #333;

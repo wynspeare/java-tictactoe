@@ -17,7 +17,7 @@ public class StaticHandler implements IHandler {
       System.out.println("\nRESOURCE FOUND! for" + requestedResource + "\n");
       return new Response.Builder()
               .withStatusLine(StatusCode.OK)
-//              .withHeader("Content-type: image/ico")
+              .withHeader("Content-type: " + fileHandler.getMIMEType())
               .withBody(fileHandler.stringifyFile())
               .build();
     } else {
