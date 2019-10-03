@@ -19,10 +19,8 @@ public class ResourceHandler implements IHandler {
   @Override
   public Response buildResponse(Request request) {
 
-
     Response indexPage = new Response.Builder()
             .withStatusLine(StatusCode.OK)
-//            .withHeader("Content-type: text/html")
             .withBody(stringifyFile())
             .build();
     return indexPage;
