@@ -1,0 +1,87 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,100,300,500,700);
+
+html, body {
+  height: 100%;
+}
+html {
+    display: table;
+    width: 100%;
+}
+body {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: 3vw;
+}
+h2 {
+    padding-bottom: 20px;
+}
+#game-container {
+    width: 25%;
+    margin: 0 auto;
+    padding: 20px 40px;
+    border: 5px dashed #333;
+    border-radius: 4vw;
+}
+.board-container {
+    overflow: hidden;
+    position: relative;
+    float: left;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 20px;
+    background-color: black;
+}
+.board {
+    overflow: hidden;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 95%;
+    height: 95%;
+    margin: 2.5%;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cell {
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 29.3%;
+    height: 29.3%;
+    background-color: white;
+    border-radius: 15px;
+    margin: 2%;
+    display: table;
+}
+.cell-contents {
+    overflow: hidden;
+    box-sizing: border-box;
+    line-height: 100%;
+    font-size: 5vw;
+    font-weight: 700;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.btn  {
+    font-family: 'Montserrat', sans-serif;
+    background: #000000;
+    color: white;
+    border: none;
+    padding: 2vw 3vw;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 2vw;
+    text-decoration: none;
+    margin-top: 4vh;
+}
+.btn:hover {
+    color: black;
+    background: #d1e537;
+}
