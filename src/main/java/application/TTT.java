@@ -1,11 +1,11 @@
 package application;
 
+import application.handlers.SaveDataHandler;
 import application.handlers.StaticHandler;
 import server.HTTPServer;
 import server.IController;
 import server.Router;
 import server.TTTController;
-import server.handlers.EchoHandler;
 import server.handlers.RedirectHandler;
 
 public class TTT {
@@ -33,7 +33,7 @@ public class TTT {
     router.addRoute("GET", "/favicon.ico", new StaticHandler());
     router.addRoute("GET", "/script.js", new StaticHandler());
     router.addRoute("GET", "/board.json", new StaticHandler());
-    router.addRoute("POST", "/board.json", new EchoHandler());
+    router.addRoute("POST", "/board.json", new SaveDataHandler());
 
     return router;
   }
