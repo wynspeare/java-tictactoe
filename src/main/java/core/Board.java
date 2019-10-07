@@ -30,6 +30,11 @@ public class Board {
     return cells.get(location - 1);
   }
 
+  public void setCells(String updatedBoard) {
+    JsonReader jsonReader = new JsonReader();
+    this.cells = jsonReader.parseJson(updatedBoard);
+  }
+
   public void updateJsonBoard() {
     JsonWriter jsonWriter = new JsonWriter();
     jsonWriter.updateFile(cells);

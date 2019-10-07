@@ -1,10 +1,3 @@
-//var jsonBoard = require('./board.json');
-//    console.log(jsonBoard.board[1]);
-
-//import * as data from './board.json';
-//const {board} = data;
-//console.log(board);
-
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
     rawFile.overrideMimeType("application/json");
@@ -47,10 +40,19 @@ readTextFile("/board.json", function(text){
             let cellIndex = parseInt(event.target.id);
             board[cellIndex - 1] = "X";
             console.log(board);
-            updateJsonBoard(board)
+            updateJsonBoard(board);
+            var reloadPromise = new Promise(function() {
+                updateJsonBoard(board);
+            });
+            reloadPromise.then(location.reload());
+//            reloadPromise.then(refreshBoard())
         } else {
             modal.style.display = "block";
         }
+    }
+
+    function refreshBoard() {
+        $('#board').load("/ttt #board")
     }
 
     function updateJsonBoard(updatedBoard) {
@@ -60,7 +62,7 @@ readTextFile("/board.json", function(text){
         request.send(JSON.stringify({
             board: updatedBoard
         }));
-        // trigger a POST request with the updatedBoard
+
     }
 
     function isCellFilled(cell) {

@@ -24,6 +24,7 @@ public class JsonWriter {
     board = board.stream().map(cell -> "  \"" + cell + "\",").collect(Collectors.toList());
     String lastCell = board.get(board.size() - 1).replace(",", "");
     board.set(board.size() - 1, lastCell);
+
     return board;
   }
 
@@ -39,4 +40,5 @@ public class JsonWriter {
 
     writeToFile(formattedBoard);
   }
+
 }
