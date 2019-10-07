@@ -18,7 +18,7 @@ public class StaticHandler implements IHandler {
       return new Response.Builder()
               .withStatusLine(StatusCode.OK)
               .withHeader("Content-type: " + fileHandler.getMIMEType())
-              .withBody(fileHandler.stringifyFile())
+              .withBody(fileHandler.getFileAsBytes())
               .build();
     } else {
       IHandler unknownResource = new UnknownResourceHandler();

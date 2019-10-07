@@ -16,12 +16,13 @@ public class ResourceHandler implements IHandler {
   public ResourceHandler (String filePath) {
     this.filePath = filePath;
   }
+
   @Override
   public Response buildResponse(Request request) {
 
     Response indexPage = new Response.Builder()
             .withStatusLine(StatusCode.OK)
-            .withBody(stringifyFile())
+            .withBody(stringifyFile().getBytes())
             .build();
     return indexPage;
   }

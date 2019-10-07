@@ -47,13 +47,19 @@ readTextFile("/board.json", function(text){
             let cellIndex = parseInt(event.target.id);
             board[cellIndex - 1] = "X";
             console.log(board);
-        // updateJsonBoard(board)
+            updateJsonBoard(board)
         } else {
             modal.style.display = "block";
         }
     }
 
-    function updateJsonBoard(board) {
+    function updateJsonBoard(updatedBoard) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "/board.json", true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({
+            board: updatedBoard
+        }));
         // trigger a POST request with the updatedBoard
     }
 
