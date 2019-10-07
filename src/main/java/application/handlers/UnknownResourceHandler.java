@@ -13,7 +13,7 @@ public class UnknownResourceHandler implements IHandler {
 
     return new Response.Builder()
               .withStatusLine(StatusCode.NOT_FOUND)
-              .withBody(fileHandler.stringifyFile())
+              .withBody(fileHandler.getFileAsBytes())
               .build();
   }
 }
