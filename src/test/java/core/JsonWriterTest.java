@@ -38,11 +38,10 @@ public class JsonWriterTest {
   @Test
   public void canWriteProperlyFormattedJSONToAFile() {
     JsonWriter jsonWriter = new JsonWriter();
-    ArrayList<String> board = new ArrayList<String>( Arrays.asList("C", " ", " ", " ", "X", "I", "N", "E", "!") );
+    ArrayList<String> board = new ArrayList<String>( Arrays.asList(" ", " ", " ", " ", " ", " ", " ", " ", " ") );
     List<String> formattedCells = jsonWriter.formatCells(board);
     List<String> formattedBoard = jsonWriter.formatBoard(formattedCells);
 
     jsonWriter.writeToFile(formattedBoard);
   }
-
 }
