@@ -43,7 +43,6 @@ public class FileHandler {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    System.out.println(mimeType);
     return mimeType;
   }
 }

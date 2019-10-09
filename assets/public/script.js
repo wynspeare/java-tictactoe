@@ -1,84 +1,76 @@
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
-}
-
 const cells = document.querySelectorAll('.cell-contents')
 const startGame = document.querySelector('.btn')
 let modal = document.getElementById("myModal");
 let closeModal = document.getElementsByClassName("close")[0];
 let boardContainer = document.getElementsByClassName("board")[0];
 
-readTextFile("/board.json", function(text){
-    let data = JSON.parse(text);
-    console.log(data.board)
-    let board = data.board
+function loadBoard(callback) {
+ $.getJSON( "/board.json", function( data ) {
+        console.log(data.board);
+        callback(data.board)
+      })
+ }
 
+function updateCells(board) {
+    console.log(board);
     cells.forEach(function (cell, index) {
         cell.innerHTML = board[index];
     })
+}
 
-    function clearCells(event) {
-        cells.forEach(cell => {
-            cell.innerHTML = " ";
-        })
+loadBoard(updateCells)
+
+function clearCells(event) {
+    cells.forEach(cell => {
+        cell.innerHTML = " ";
+    })
+}
+
+function markCell(event) {
+    let cell = document.querySelector(`[id="${event.target.id}"]`)
+    if (!isCellFilled(cell.innerHTML)) {
+        cell.innerHTML = "X";
+        let updatedBoard = getCellsValues();
+
+        let reloadPromise = new Promise(function() {
+            updateJsonBoard(updatedBoard);
+        });
+        reloadPromise.then(loadBoard(updateCells))
+    } else {
+        modal.style.display = "block";
     }
+}
 
-    function markCell(event) {
-        let cell = document.querySelector(`[id="${event.target.id}"]`)
+function getCellsValues() {
+    let board = [];
+    cells.forEach(function (cell, index) {
+        board.push(cell.innerHTML);
+    })
+    return board;
+}
 
-        console.log(isCellFilled(cell.innerHTML))
-        if (!isCellFilled(cell.innerHTML)) {
-            cell.innerHTML = "X";
-            let cellIndex = parseInt(event.target.id);
-            board[cellIndex - 1] = "X";
-            console.log(board);
-            updateJsonBoard(board);
-            var reloadPromise = new Promise(function() {
-                updateJsonBoard(board);
-            });
-            reloadPromise.then(location.reload());
-//            reloadPromise.then(refreshBoard())
-        } else {
-            modal.style.display = "block";
-        }
-    }
+function updateJsonBoard(updatedBoard) {
+    var request = new XMLHttpRequest();
+    request.open("POST", "/board.json", true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringify({
+        board: updatedBoard
+    }));
+}
 
-    function refreshBoard() {
-        $('#board').load("/ttt #board")
-    }
+function isCellFilled(cell) {
+    return (cell == "X" || cell == "O" ? true : false)
+}
 
-    function updateJsonBoard(updatedBoard) {
-        var request = new XMLHttpRequest();
-        request.open("POST", "/board.json", true);
-        request.setRequestHeader('Content-Type', 'application/json');
-        request.send(JSON.stringify({
-            board: updatedBoard
-        }));
+closeModal.onclick = function() {
+    modal.style.display = "none";
+}
 
-    }
-
-    function isCellFilled(cell) {
-       return (cell == "X" || cell == "O" ? true : false)
-    }
-
-    closeModal.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) {
+window.onclick = function(event) {
+    if (event.target == modal) {
         modal.style.display = "none";
-      }
     }
+}
 
-    startGame.addEventListener('click', clearCells)
-    boardContainer.addEventListener('click', markCell)
-});
+startGame.addEventListener('click', clearCells)
+boardContainer.addEventListener('click', markCell)
