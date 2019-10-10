@@ -117,3 +117,7 @@ h2 {
   text-decoration: none;
   cursor: pointer;
 }
+#play-again-btn {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
