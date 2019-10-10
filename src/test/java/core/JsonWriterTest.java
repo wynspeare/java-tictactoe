@@ -35,16 +35,6 @@ public class JsonWriterTest {
     assertEquals(expected, jsonWriter.formatBoard(formattedCells));
   }
 
-//  @Test
-//  public void canWriteProperlyFormattedJSONToAFile() {
-//    JsonWriter jsonWriter = new JsonWriter();
-//    ArrayList<String> board = new ArrayList<String>( Arrays.asList(" ", " ", " ", " ", " ", " ", " ", " ", " ") );
-//    List<String> formattedCells = jsonWriter.formatCells(board);
-//    List<String> formattedBoard = jsonWriter.formatBoard(formattedCells);
-//
-//    jsonWriter.writeToFile(formattedBoard);
-//  }
-
   @Test
   public void canWriteProperlyFormatJsonWithGameStatus() {
     JsonWriter jsonWriter = new JsonWriter();
