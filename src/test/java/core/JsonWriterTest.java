@@ -41,7 +41,7 @@ public class JsonWriterTest {
     ArrayList<String> board = new ArrayList<String>( Arrays.asList("C", "A", "R", "O", "L", "I", "N", "E", "!") );
     List<String> formattedCells = jsonWriter.formatCells(board);
     List<String> formattedBoard = jsonWriter.formatBoard(formattedCells);
-    List<String> formattedBoardWithGameStatus = jsonWriter.addGameStatus(formattedBoard, "win", "X");
+    List<String> formattedBoardWithGameStatus = jsonWriter.addGameStatus(formattedBoard, "win", "X", "");
 
     System.out.println(formattedBoardWithGameStatus);
     jsonWriter.writeToFile(formattedBoardWithGameStatus);
@@ -51,7 +51,7 @@ public class JsonWriterTest {
   public void canWriteUpdatedBoardAndGameStatusToFile() {
     JsonWriter jsonWriter = new JsonWriter();
     ArrayList<String> board = new ArrayList<String>( Arrays.asList("O", "X", "X", "X", "X", "O", " ", "X", "!") );
-    jsonWriter.updateFileWithGameStatus(board, "win", "X");
+    jsonWriter.updateFileWithGameStatus(board, "win", "X", "");
   }
 
 }

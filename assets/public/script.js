@@ -1,6 +1,9 @@
+//"winCombo": [1, 4, 7]
+
 const cells = document.querySelectorAll('.cell-contents');
 const startGameButton = document.getElementById('start-game-btn');
 const playAgainButton = document.getElementById('play-again-btn');
+const showWinnerButton = document.getElementById('show-winner');
 
 let cellFilledModal = document.getElementById("cell-filled-modal");
 let playAgainModal = document.getElementById("game-over-modal");
@@ -9,6 +12,8 @@ let closeModal = document.getElementsByClassName("close")[0];
 let closePlayAgainModal = document.getElementsByClassName("close")[1];
 
 let boardContainer = document.getElementsByClassName("board")[0];
+let overlay = document.getElementById('overlay');
+
 
 function loadBoard(callback) {
     $.ajax({
@@ -18,7 +23,7 @@ function loadBoard(callback) {
     .done(function (data) {
         callback(data)
     }, function (data) {
-        isGameOver(data.gameStatus, data.winner)
+        isGameOver(data.gameStatus, data.winner, data.winCombo)
     })
     .fail(function (jqXHR, textStatus, error) {
         console.log(error)
@@ -29,16 +34,18 @@ function updateCells(jsonData) {
     cells.forEach(function (cell, index) {
         cell.innerHTML = jsonData.board[index];
     })
-
 }
 
-function isGameOver(gameStatus, winner) {
+function isGameOver(gameStatus, winner, combo) {
     let modalText = document.getElementById('modal-text');
     if (gameStatus == "win") {
         modalText.innerHTML = `${winner} has WON!`
         playAgainModal.style.display = "block";
+        overlay.style.display = "block";
+        showWinningCombo(combo)
     } else if (gameStatus == "draw") {
         modalText.innerHTML = "It's a draw!"
+        overlay.style.display = "show";
         playAgainModal.style.display = "block";
     } else {
         // Comp moved "here"?
@@ -50,7 +57,9 @@ loadBoard(updateCells)
 function clearCells(event) {
     cells.forEach(cell => {
         cell.innerHTML = " ";
+        cell.style.background = "white"
     })
+    overlay.style.display = "none";
     let updatedBoard = getCellsValues();
     updateJsonBoard(updatedBoard);
 }
@@ -92,7 +101,7 @@ function updateJsonBoard(updatedBoard) {
     .done(function (data) {
         updateCells(data)
     }, function (data) {
-          isGameOver(data.gameStatus, data.winner)
+          isGameOver(data.gameStatus, data.winner, data.winCombo)
       })
     .fail(function (jqXHR, textStatus, error) {
         console.log(error)
@@ -121,7 +130,22 @@ function playNewGame(event) {
     playAgainModal.style.display = "none";
 }
 
+function hideModal(event) {
+    playAgainModal.style.display = "none";
+}
+
+function showWinningCombo(winCombo) {
+    let finalBoard = getCellsValues();
+    console.log(winCombo)
+    cells.forEach(function (cell, index) {
+        if ( winCombo.includes(index) ) {
+            cell.style.background = "#d1e537"
+        }
+    })
+}
+
 startGameButton.addEventListener('click', clearCells)
 playAgainButton.addEventListener('click', playNewGame)
+showWinnerButton.addEventListener('click', hideModal)
 
 boardContainer.addEventListener('click', markCell)

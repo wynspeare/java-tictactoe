@@ -35,7 +35,7 @@ public class SaveDataHandler implements IHandler {
       game.turn();
     } else {
       JsonWriter jsonWriter = new JsonWriter();
-      jsonWriter.updateFileWithGameStatus(board.cells, "", "");
+      jsonWriter.updateFileWithGameStatus(board.cells, "", "", "");
     }
 
   }

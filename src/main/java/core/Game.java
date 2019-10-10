@@ -36,7 +36,8 @@ public class Game {
         gameStatus = "draw";
       }
     }
-    jsonWriter.updateFileWithGameStatus(board.cells, gameStatus, winner);
+    String wonCombo = rules.winningCombo;
+    jsonWriter.updateFileWithGameStatus(board.cells, gameStatus, winner, wonCombo);
   }
 
 
