@@ -116,13 +116,10 @@ hs_err_pid*
 
 ### Gradle ###
 .gradle
-build/classes
-build/generated
-build/reports
-build/test-results
-build/tmp
-build/.DS_Store
-build/libs/.DS_Store
+
+**/build/
+!build/libs
+**/DS_Store
 
 # Ignore Gradle GUI config
 gradle-app.setting

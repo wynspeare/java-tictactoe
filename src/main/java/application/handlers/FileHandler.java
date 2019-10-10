@@ -3,6 +3,7 @@ package application.handlers;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 public class FileHandler {
@@ -11,6 +12,7 @@ public class FileHandler {
   public FileHandler(String requestedResource) {
     this.requestedResource = requestedResource;
   }
+
   public boolean fileExists() {
     File file = new File("./assets/public" + requestedResource);
     return file.exists();
@@ -23,6 +25,16 @@ public class FileHandler {
             .lines().collect(Collectors.joining("\n"));
   }
 
+  public byte[] getFileAsBytes() {
+    byte[] convertedFile = null;
+    try {
+      convertedFile = Files.readAllBytes(Paths.get("assets/public" + requestedResource));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return convertedFile;
+  }
+
   public String getMIMEType() {
     Path path = new File("assets/public" + requestedResource).toPath();
     String mimeType = null;
@@ -31,7 +43,6 @@ public class FileHandler {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    System.out.println(mimeType);
     return mimeType;
   }
 }
