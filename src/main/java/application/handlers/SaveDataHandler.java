@@ -3,6 +3,8 @@ package application.handlers;
 import HTTPcomponents.StatusCode;
 import core.Board;
 import core.ComputerPlayer;
+import core.Game;
+import core.JsonWriter;
 import server.Response;
 import server.handlers.IHandler;
 import server.request.Request;
@@ -27,13 +29,14 @@ public class SaveDataHandler implements IHandler {
     Board board = new Board();
     board.setCells(updatedBoard);
 
-    if(!board.isBoardEmpty()) {
-      ComputerPlayer player = new ComputerPlayer();
+    Game game = new Game(board);
 
-      Integer move = player.getMove(board);
-      board.placeMarker(move, "O");
+    if(!board.isBoardEmpty()) {
+      game.turn();
+    } else {
+      JsonWriter jsonWriter = new JsonWriter();
+      jsonWriter.updateFileWithGameStatus(board.cells, "", "");
     }
 
-//    board.updateJsonBoard();
   }
 }

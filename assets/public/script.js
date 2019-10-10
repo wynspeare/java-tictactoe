@@ -17,7 +17,6 @@ function loadBoard(callback) {
     })
     .done(function (data) {
         callback(data)
-
     }, function (data) {
         isGameOver(data.gameStatus, data.winner)
     })
@@ -42,7 +41,7 @@ function isGameOver(gameStatus, winner) {
         modalText.innerHTML = "It's a draw!"
         playAgainModal.style.display = "block";
     } else {
-        // Comp moved "here"
+        // Comp moved "here"?
     }
 }
 
@@ -92,7 +91,9 @@ function updateJsonBoard(updatedBoard) {
     })
     .done(function (data) {
         updateCells(data)
-    })
+    }, function (data) {
+          isGameOver(data.gameStatus, data.winner)
+      })
     .fail(function (jqXHR, textStatus, error) {
         console.log(error)
     })
@@ -105,6 +106,9 @@ function isCellFilled(cell) {
 closeModal.onclick = function() {
     cellFilledModal.style.display = "none";
 }
+closePlayAgainModal.onclick = function() {
+    playAgainModal.style.display = "none";
+}
 
 window.onclick = function(event) {
     if (event.target == cellFilledModal) {
@@ -112,5 +116,12 @@ window.onclick = function(event) {
     }
 }
 
+function playNewGame(event) {
+    clearCells(event)
+    playAgainModal.style.display = "none";
+}
+
 startGameButton.addEventListener('click', clearCells)
+playAgainButton.addEventListener('click', playNewGame)
+
 boardContainer.addEventListener('click', markCell)

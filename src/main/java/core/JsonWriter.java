@@ -41,7 +41,7 @@ public class JsonWriter {
   }
 
   public List<String> addGameStatus(List<String> board, String gameStatus, String winner) {
-    board.add(board.size(), "  \"game status\": \"" + gameStatus + "\",");
+    board.add(board.size(), "  \"gameStatus\": \"" + gameStatus + "\",");
     board.add(board.size(), "  \"winner\": \"" + winner + "\"");
     board.add(board.size(), "  }");
     return board;

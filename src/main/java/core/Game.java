@@ -20,7 +20,6 @@ public class Game {
     } else {
       Integer move = player.getMove(board);
       board.placeMarker(move, "O");
-
       updateGameStatus(board, "O");
     }
   }
@@ -29,7 +28,6 @@ public class Game {
     JsonWriter jsonWriter = new JsonWriter();
     String gameStatus = "";
     String winner = "";
-//    jsonWriter.updateFile(board.cells);
     if (rules.isOver(board, currentMarker)) {
       if(rules.checkIfWon(board.cells, currentMarker)) {
         gameStatus = "win";

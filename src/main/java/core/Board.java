@@ -47,9 +47,4 @@ public class Board {
             .mapToObj(i -> i + 1)
             .collect(Collectors.toList());
   }
-
-//  public void updateJsonBoard() {
-//    JsonWriter jsonWriter = new JsonWriter();
-//    jsonWriter.updateFile(cells);
-//  }
 }
