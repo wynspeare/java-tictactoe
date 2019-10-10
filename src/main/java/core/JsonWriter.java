@@ -28,11 +28,6 @@ public class JsonWriter {
     return board;
   }
 
-//  public List<String> formatBoard(List<String> board) {
-//    board.add(0, "{\n  \"board\": [");
-//    board.add(board.size(), "  ]\n}");
-//    return board;
-//  }
 
   public List<String> formatBoard(List<String> board) {
     board.add(0, "{\n  \"board\": [");
@@ -40,26 +35,20 @@ public class JsonWriter {
     return board;
   }
 
-  public List<String> addGameStatus(List<String> board, String gameStatus, String winner) {
+  public List<String> addGameStatus(List<String> board, String gameStatus, String winner, String combo) {
     board.add(board.size(), "  \"gameStatus\": \"" + gameStatus + "\",");
-    board.add(board.size(), "  \"winner\": \"" + winner + "\"");
+    board.add(board.size(), "  \"winner\": \"" + winner + "\",");
+    board.add(board.size(), "  \"winCombo\": \"" + combo + "\"");
     board.add(board.size(), "  }");
     return board;
   }
 
-  public void updateFileWithGameStatus(List<String> board, String gameStatus, String winner) {
+  public void updateFileWithGameStatus(List<String> board, String gameStatus, String winner, String combo) {
     List<String> formattedCells = formatCells(board);
     List<String> formattedBoard = formatBoard(formattedCells);
-    List<String> boardWithGameStatus = addGameStatus(formattedBoard, gameStatus, winner);
+    List<String> boardWithGameStatus = addGameStatus(formattedBoard, gameStatus, winner, combo);
 
     writeToFile(boardWithGameStatus);
   }
-
-//  public void updateFile(List<String> board) {
-//    List<String> formattedCells = formatCells(board);
-//    List<String> formattedBoard = formatBoard(formattedCells);
-//
-//    writeToFile(formattedBoard);
-//  }
 
 }

@@ -1,9 +1,11 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Rules {
+  public String winningCombo = "";
 
   private int[][] winCombinations = {
     { 0, 1, 2 },
@@ -30,6 +32,7 @@ public class Rules {
       }
       if (isRowComplete(tempRow, currentMarker))
       {
+        winningCombo = Arrays.toString(winCombinations[i]);
         isWon = true;
       }
       tempRow.clear();

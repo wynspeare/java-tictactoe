@@ -1,15 +1,16 @@
 {
   "board": [
+  "X",
+  "O",
   " ",
   " ",
+  "X",
   " ",
+  "O",
   " ",
-  " ",
-  " ",
-  " ",
-  " ",
-  " "
+  "X"
   ],
-  "gameStatus": "",
-  "winner": ""
+  "gameStatus": "win",
+  "winner": "X",
+  "winCombo": "[0, 4, 8]"
   }
