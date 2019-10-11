@@ -32,6 +32,8 @@ public class TTT {
     router.addRoute("GET", "/styles.css", new StaticHandler());
     router.addRoute("GET", "/favicon.ico", new StaticHandler());
     router.addRoute("GET", "/script.js", new StaticHandler());
+    router.addRoute("GET", "/w-logo.png", new StaticHandler());
+    router.addRoute("GET", "/leaves.JPG", new StaticHandler());
     router.addRoute("GET", "/board.json", new StaticHandler());
     router.addRoute("POST", "/board.json", new SaveDataHandler());
 

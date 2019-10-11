@@ -54,5 +54,4 @@ public class Rules {
   {
     return checkIfWon(board.cells, currentMarker) || checkIfDraw(board, currentMarker);
   }
-
 }
