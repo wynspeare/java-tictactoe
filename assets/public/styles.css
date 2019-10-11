@@ -15,18 +15,25 @@ body {
 }
 h1 {
     margin-block-start: 0.2em;
-    font-size: 3vw;
+    font-size: 3.2vw;
+    color: white;
+    text-shadow: 3px 3px black;
 }
 h2 {
     padding-bottom: 15px;
     font-size: 2.5vw;
 }
 #game-container {
-    width: 25%;
+    width: 28%;
     margin: 0 auto;
     padding: 20px 40px;
-    border: 5px dashed #333;
-    border-radius: 4vw;
+    border: 20px double black;
+    border-radius: 3.5vw;
+    background: url("/leaves.JPG") no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #d1e537;
+    background-blend-mode: darken;
 }
 .board-container {
     overflow: hidden;
@@ -46,8 +53,6 @@ h2 {
     padding-bottom: 100%;
     margin-top: -100%;
     border-radius: 20px;
-    background-color: gray;
-    opacity: .1;
 }
 .board {
     overflow: hidden;
@@ -91,7 +96,7 @@ h2 {
     padding: 1.8vw 2.8vw;
     border-radius: 10px;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 3vh;
     text-decoration: none;
     margin-top: 3.5vh;
 }
@@ -138,4 +143,11 @@ h2 {
   margin-top: 1.5vh;
   font-size: 1em;
   margin-bottom: 15px;
+}
+#logo {
+  float: left;
+  position: overlay;
+  margin-top: -40px;
+  margin-left: 20px;
+
 }

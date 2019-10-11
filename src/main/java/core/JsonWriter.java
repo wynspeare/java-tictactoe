@@ -28,7 +28,6 @@ public class JsonWriter {
     return board;
   }
 
-
   public List<String> formatBoard(List<String> board) {
     board.add(0, "{\n  \"board\": [");
     board.add(board.size(), "  ],");
@@ -50,5 +49,4 @@ public class JsonWriter {
 
     writeToFile(boardWithGameStatus);
   }
-
 }

@@ -1,5 +1,3 @@
-//"winCombo": [1, 4, 7]
-
 const cells = document.querySelectorAll('.cell-contents');
 const startGameButton = document.getElementById('start-game-btn');
 const playAgainButton = document.getElementById('play-again-btn');
@@ -48,7 +46,7 @@ function isGameOver(gameStatus, winner, combo) {
         overlay.style.display = "show";
         playAgainModal.style.display = "block";
     } else {
-        // Comp moved "here"?
+        // Comp moved "here" - highlight cell?
     }
 }
 
@@ -147,5 +145,4 @@ function showWinningCombo(winCombo) {
 startGameButton.addEventListener('click', clearCells)
 playAgainButton.addEventListener('click', playNewGame)
 showWinnerButton.addEventListener('click', hideModal)
-
 boardContainer.addEventListener('click', markCell)
