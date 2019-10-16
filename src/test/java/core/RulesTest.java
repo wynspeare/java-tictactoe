@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class RulesTest {
   @Test
-  public void checkIfWonCanTakeInABoardAndSeeIfThereIsAWinner() {
+  public void canTakeInABoardAndSeeIfThereIsAWinner() {
     Rules rules = new Rules();
     Board board = new Board();
     board.placeMarker(1, "X");

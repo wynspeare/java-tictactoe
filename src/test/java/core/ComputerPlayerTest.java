@@ -19,7 +19,7 @@ public class ComputerPlayerTest {
   }
 
   @Test
-  public void aCompPlayerCanSelectATheLastMove() {
+  public void aCompPlayerCanSelectTheLastMove() {
     ComputerPlayer player = new ComputerPlayer();
     Board board = new Board();
     board.placeMarker(1, "X");

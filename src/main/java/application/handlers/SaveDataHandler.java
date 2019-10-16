@@ -1,10 +1,10 @@
 package application.handlers;
 
 import HTTPcomponents.StatusCode;
+import application.utils.FileHandler;
 import core.Board;
-import core.ComputerPlayer;
 import core.Game;
-import core.JsonWriter;
+import core.utils.JsonWriter;
 import server.Response;
 import server.handlers.IHandler;
 import server.request.Request;
@@ -37,6 +37,5 @@ public class SaveDataHandler implements IHandler {
       JsonWriter jsonWriter = new JsonWriter();
       jsonWriter.updateFileWithGameStatus(board.cells, "", "", "");
     }
-
   }
 }

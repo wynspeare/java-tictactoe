@@ -1,5 +1,7 @@
 package core;
 
+import core.utils.JsonWriter;
+
 public class Game {
   Board board;
   ComputerPlayer player;
@@ -39,6 +41,5 @@ public class Game {
     String wonCombo = rules.winningCombo;
     jsonWriter.updateFileWithGameStatus(board.cells, gameStatus, winner, wonCombo);
   }
-
 
 }

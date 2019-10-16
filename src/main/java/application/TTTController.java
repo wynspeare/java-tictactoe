@@ -1,7 +1,9 @@
-package server;
+package application;
 
 import HTTPcomponents.Methods;
 import application.handlers.UnknownResourceHandler;
+import server.IController;
+import server.Response;
 import server.handlers.IHandler;
 import server.request.Request;
 

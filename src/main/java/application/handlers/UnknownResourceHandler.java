@@ -1,6 +1,7 @@
 package application.handlers;
 
 import HTTPcomponents.StatusCode;
+import application.utils.FileHandler;
 import server.Response;
 import server.handlers.IHandler;
 import server.request.Request;

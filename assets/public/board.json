@@ -10,7 +10,7 @@
   " ",
   " "
   ],
-  "gameStatus": "",
-  "winner": "",
+  "gameStatus": "win",
+  "winner": "X",
   "winCombo": ""
   }
