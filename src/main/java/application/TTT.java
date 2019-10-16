@@ -2,10 +2,10 @@ package application;
 
 import application.handlers.SaveDataHandler;
 import application.handlers.StaticHandler;
+import application.utils.ServerLogger;
 import server.HTTPServer;
 import server.IController;
 import server.Router;
-import server.TTTController;
 import server.handlers.RedirectHandler;
 
 public class TTT {

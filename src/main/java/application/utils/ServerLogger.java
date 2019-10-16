@@ -1,4 +1,4 @@
-package application;
+package application.utils;
 
 import server.logger.ILogger;
 
@@ -12,7 +12,7 @@ public class ServerLogger implements ILogger {
   private Logger logger;
 
   public ServerLogger(String directoryLocation){
-    logger = Logger.getLogger(application.ServerLogger.class.getName());
+    logger = Logger.getLogger(ServerLogger.class.getName());
     makeLogDirectory(directoryLocation);
 
     try {

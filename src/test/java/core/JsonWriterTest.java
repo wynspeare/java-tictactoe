@@ -1,5 +1,6 @@
 package core;
 
+import core.utils.JsonWriter;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class JsonWriterTest {
   @Test
   public void canWriteUpdatedBoardAndGameStatusToFile() {
     JsonWriter jsonWriter = new JsonWriter();
-    ArrayList<String> board = new ArrayList<String>( Arrays.asList("O", "X", "X", "X", "X", "O", " ", "X", "!") );
+    ArrayList<String> board = new ArrayList<String>( Arrays.asList(" ", " ", " ", " ", " ", " ", " ", " ", " ") );
     jsonWriter.updateFileWithGameStatus(board, "win", "X", "");
   }
 }

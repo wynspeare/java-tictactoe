@@ -1,5 +1,6 @@
 package core;
 
+import core.utils.JsonReader;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -26,9 +27,6 @@ public class JsonReaderTest {
     JsonReader jsonReader = new JsonReader();
     String[] board = jsonReader.splitBoard(incomingBoard);
 
-//    for (String element : board) {
-//      System.out.println("-- " + element + " ---\n" );
-//    }
     assertEquals(9, board.length);
   }
 
