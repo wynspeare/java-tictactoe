@@ -1,4 +1,4 @@
-# TicTacToe ![build--badge](https://travis-ci.com/wynspeare/java-tictactoe.svg?branch=master)
+# TicTacToe  ![build--badge](https://travis-ci.com/wynspeare/java-tictactoe.svg?branch=master)
 
 
 ## Getting Started
@@ -16,7 +16,7 @@ git clone git@github.com:wynspeare/java-tictactoe.git
 
 #### 2. Build the project and start the application
 
-First navigate into the root directory of the project.
+First navigate into the root directory of the project:
 ```
 cd java-tictactoe
 ```
@@ -34,11 +34,11 @@ http://localhost:5000/ttt
 ```
 
 #### 4. Close the application
-From the root directory of the project enter the following command.
+From the root directory of the project enter the following command:
 ```
 lsof -i:5000 
 ```
-Take note of the `PID` number. This is the `process id` for the application. Next enter the following command using the `PID`.
+Take note of the `PID` number. This is the `process id` for the application. Next enter the following command using the `PID`:
 ```
 kill <PID>
 ```
@@ -63,4 +63,4 @@ So enter `kill 1234` to end the game, stop the server and close the port.
 * [JUnit 4](https://junit.org/junit4/)
 * [Travis CI](https://travis-ci.org/)
 * [JavaScript](https://www.javascript.com/)
-* [iQuery/AJAX](https://api.jquery.com/jquery.ajax/)
+* [jQuery/AJAX](https://api.jquery.com/jquery.ajax/)
